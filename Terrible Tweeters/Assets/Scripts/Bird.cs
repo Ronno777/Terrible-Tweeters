@@ -38,8 +38,12 @@ public class Bird : MonoBehaviour
         var currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
+
         _rigidbody2D.isKinematic = false;
         _rigidbody2D.AddForce(direction * _launchForce);
+
+        var audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
 
         _spriteRenderer.color = Color.white;
         IsDragging= false;
