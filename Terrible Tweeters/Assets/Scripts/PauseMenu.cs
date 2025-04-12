@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -18,7 +13,7 @@ public class PauseMenu : MonoBehaviour
             {
                 Resume();
             }
-            else 
+            else
             {
                 Pause();
             }
@@ -31,23 +26,21 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
-    void Pause()
+
+    private void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
 
-    public void LoadMenu() 
+    public void LoadMenu()
     {
         Debug.Log("Loading menu...");
-        //future use possibly?
     }
 
-    public void QuitGame() 
+    public void QuitGame()
     {
         Debug.Log("Quitting game...");
-        //Application.Quit();
-        //No application shutdown for WebGL builds
     }
 }
